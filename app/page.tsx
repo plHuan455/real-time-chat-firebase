@@ -65,10 +65,10 @@ export default function Home() {
 
   const handleSend = async () => {
 
-    // if (!user) {
-    //   alert("Need login");
-    //   return;
-    // }
+    if (!user) {
+      alert("Need login");
+      return;
+    }
 
     // const q = query(
     //   collection(db, "messages"),
@@ -84,21 +84,21 @@ export default function Home() {
     
     const { uid, displayName, photoURL } = user ?? {};
 
-    const res = await addDoc(collection(db, "messages"), {
-      text: inputValue,
-      name: name,
-      avatar: "https://picsum.photos/300/300",
-      createdAt: serverTimestamp(),
-      uid: name,
-    })
-
     // const res = await addDoc(collection(db, "messages"), {
     //   text: inputValue,
-    //   name: displayName,
-    //   avatar: photoURL,
+    //   name: name,
+    //   avatar: "https://picsum.photos/300/300",
     //   createdAt: serverTimestamp(),
-    //   uid: uid,
+    //   uid: name,
     // })
+
+    const res = await addDoc(collection(db, "messages"), {
+      text: inputValue,
+      name: displayName,
+      avatar: photoURL,
+      createdAt: serverTimestamp(),
+      uid: uid,
+    })
 
     console.log(res)
 
