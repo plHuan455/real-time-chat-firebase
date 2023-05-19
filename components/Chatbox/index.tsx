@@ -1,7 +1,8 @@
 "use client"
-
+import EmojiPicker from 'emoji-picker-react';
 import { useEffect, useRef } from "react";
 import Message from "../Message";
+import InputWithEmoji from '../InputWithEmoji';
 
 export interface ChatMessageTypes {
   id: string;
@@ -33,7 +34,7 @@ export default function Chatbox ({
   }, [messageList])
   return (
     <div className="t-chatbox">
-      <div className="max-h-[500px] overflow-auto border-2 border-orange-400" ref={scrollChatRef}>
+      <div className="max-h-[500px] overflow-auto border-2 border-orange-400 border-b-0" ref={scrollChatRef}>
         <div className="flex flex-col-reverse justify-end gap-3 p-4">
           {messageList.map(value => (
             <Message 
@@ -46,19 +47,8 @@ export default function Chatbox ({
           ))}
         </div>
       </div>
-      <div className="flex justify-between gap-4 mt-3">
-        <input 
-          className="grow min-w-0 outline-none p-2 rounded-lg bg-slate-200" 
-          type="text" 
-          value={inputValue} 
-          onChange={(e) => onInputValueChange && onInputValueChange(e.target.value)}
-        />
-        <button 
-          className="px-4 bg-orange-300 rounded-lg"
-          onClick={() => onSendClick && onSendClick()}
-        >
-            Send
-        </button>
+      <div >
+        <InputWithEmoji onSendClick={console.log}/>
       </div>
     </div>
   )

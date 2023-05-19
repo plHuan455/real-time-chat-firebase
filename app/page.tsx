@@ -100,8 +100,6 @@ export default function Home() {
       uid: uid,
     })
 
-    console.log(res)
-
     setInputValue('')
   }
   return (
@@ -124,7 +122,7 @@ export default function Home() {
       </p>
       <div>
         <h2>Chat box</h2>
-        <div>
+        <div> 
           <Chatbox
             inputValue={inputValue}
             onSendClick={handleSend}
